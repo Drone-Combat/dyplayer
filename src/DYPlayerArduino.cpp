@@ -10,7 +10,7 @@ namespace DY {
     this->port = &Serial;
     this->isSoftSerial = false;
   }
-#ifdef HAVE_HWSERIAL0
+#if defined(HAVE_HWSERIAL0) || defined(TEENSYDUINO)
   Player::Player(HardwareSerial* port) {
     this->port = (Stream*)port;
     this->isSoftSerial = false;
@@ -28,7 +28,7 @@ namespace DY {
       ((SoftwareSerial*)port)->begin(9600);
 #endif
     } else {
-#ifdef HAVE_HWSERIAL0
+#if defined(HAVE_HWSERIAL0) || defined(TEENSYDUINO)
       ((HardwareSerial*)port)->begin(9600);
 #endif
     }
