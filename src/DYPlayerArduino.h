@@ -1,3 +1,5 @@
+#pragma once
+
 #ifdef ARDUINO
 #include <Arduino.h>
 #include "DYPlayer.h"
@@ -13,7 +15,7 @@ namespace DY {
       Stream *port;
       bool isSoftSerial;
       Player();
-#ifdef HAVE_HWSERIAL0
+#if defined(HAVE_HWSERIAL0) || defined(TEENSYDUINO)
       Player(HardwareSerial* port);
 #endif
 #ifdef __AVR__
